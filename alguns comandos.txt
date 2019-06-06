@@ -1,0 +1,39 @@
+env:path -> Variável de ambiente path
+
+$env:path.Split(';') -> Quebra a string variável de ambiente path em várias linhas
+
+$env:path | Get-Member -> Mostra todos os métodos e propriedades de um objeto (nesse caso path)
+
+Get-Alias -> Mostra todos os comandos e o seus respectivos apelidos
+
+Get-Alias | find /i `"rename`" -> Filtra todos os comandos que renomeiam
+
+Get-Command -> Mostra todos os comandos
+
+Get-Command -Verb *rename* -> Mostra todos os comandos que possuem o verbo rename
+
+Get-Command -noun alias -> Mostra todos os comandos com o pronome "alias"
+
+Get-Help -Name rename-Item -> Mostra a ajuda detalhada do comando "rename-item"
+
+Set-ExecutionPolicy Unrestricted -> Define a política do powershell como irrestrita
+
+New-Item $profile -> Cria o arquivo do profile para incluir alias e outras configs
+
+New-Item $profile.AllUsersAllHosts -> Cria o arquivo de profile para todos os usuários
+
+Get-Help about_* -> Lista os abouts de ajuda de todos os comandos
+
+Get-Help about_profiles -> Detalha o comando profiles
+
+Get-Variable -> Lista todas as variáveis ocupadas no PowerShell
+
+Get-Variable | ? Name -like *error* -> Lista todas as variáveis de nome "error"
+
+$private:minha_variavel -> declara $minha_variavel como privada para outros contextos
+
+-----------------------
+Argumentos
+------------------------
+
+-WhatIf -> O argumento WhatIf descreve o que o comando faz, mas não realiza a ação

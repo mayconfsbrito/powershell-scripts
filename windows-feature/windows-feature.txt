@@ -1,0 +1,40 @@
+# Download da Ferramentas de Administração de Servidor Remoto para Windows 10
+# https://www.microsoft.com/pt-BR/download/details.aspx?id=45520
+# Para gerenciamento remoto de máquinas e servidores
+
+# Verifica os comandos de windowsfeature
+get-command -noun windowsfeature
+
+# Instala a feture especificada
+Install-windowsfeature -ComputerName NOME_DA_MAQUINA -Name NOME_DA_FEATURE
+
+# Lista as informações de um determinado job
+Get-Job NOME_DO_JOB
+
+# Lista formatada de informações do job
+(Get-Job NOME_DO_JOB) | Format-List
+
+# Recebe o resultado da execução de um job
+Receive-Job NOME_DO_JOB
+
+# Inicializa uma variável com um array de valores SRV01 até SRV03
+$computers = 1..3 | % { "SRV0$_" }
+
+# Instala a funcionalidade "web-server"
+# Start-job -> Execução de jobs em parelelo
+$computers | % {
+    $computer = $_
+    Start-Job -ScriptBlock {
+        Install-WindowsFeature -Name "web-Server" -ComputerName $computer
+    }
+}
+
+# Armazena na variável através de um job os processos do sistema
+$jobProcesso = Start-Job -ScriptBlock { Get-Process } -Name "Job_GetProcess"
+
+#Reinicia remotamente os 3 computadores especificados
+("SRV01", "SRV02", "SRV03") | % {
+    Start-Job -ArgumentList $_ -ScriptBlock {
+        Restart-Computer -Force -Computer $args[0]
+    }
+}

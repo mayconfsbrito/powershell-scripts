@@ -32,6 +32,8 @@ Get-Variable | ? Name -like *error* -> Lista todas as variáveis de nome "error"
 
 $private:minha_variavel -> declara $minha_variavel como privada para outros contextos
 
+QUALQUER_COMANDO | Out-GridView -> possibilita que o primeiro comando seja visto em uma janela com grid, facilitando a visualização de muitas opções
+
 -----------------------
 Argumentos
 ------------------------

@@ -1,0 +1,14 @@
+# Cria um drive com o nome e diretório especificado para o tipo de provider FileSystem
+New-PSDrive -Name NOME_DO_DRIVE -ROOT CAMINHO_DO_DRIVE -PSProvider FileSystem
+
+# Muda para o diretório do drive especificado
+cd NOME_DO_DRIVE:
+
+# Lista os drives especificados independente do FileSystem
+Get-PSDrive
+
+# Navega pelas variáveis de ambiente
+cd env:
+
+# Navega pelo registro do windows
+cd HKCU:

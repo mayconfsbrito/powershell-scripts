@@ -1,0 +1,11 @@
+# Mostra a máquina em que está sendo executado o powershell
+Get-Host
+
+# Abre uma sessão do powershell em outra máquina
+Enter-PSSession -ComputerName NOME_DA_MAQUINA_DESTINO
+
+# Abre uma sessão remota em outra máquina
+Enter-PSSession -ComputerName NOME_DA_MAQUINA_DESTINO -Port 90 -Credential DOMINIO\NOME
+
+# Sai da sessão
+Exit-PSSession
